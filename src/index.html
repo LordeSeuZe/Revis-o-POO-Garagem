@@ -16,34 +16,39 @@
 </head>
 
 <body>
-    <h1>Minha Garagem</h1>
-    <div>
-        <h3>Adicionar Veículo</h3>
-        <input id="marca" type="text" placeholder="Marca">
-        <input id="modelo" type="text" placeholder="Modelo">
-        <select id="tipo">
-            <option value="carro">Carro</option>
-            <option value="moto">Moto</option>
-        </select>
-        <div id="pPortas">
-        <input id="portas" type="number" placeholder="Numero de portas">
+    <div id="container">
+        <h1>Minha Garagem</h1>
+        <div>
+            <h3>Adicionar Veículo</h3>
+            <input id="marca" type="text" placeholder="Marca">
+            <input id="modelo" type="text" placeholder="Modelo">
+            <select id="tipo">
+                <option value="carro">Carro</option>
+                <option value="moto">Moto</option>
+            </select>
+            <div id="pPortas">
+                <input id="portas" type="number" placeholder="Numero de portas">
+            </div>
+            <div id="pCilindradas">
+                <input id="cilindradas" type="number" placeholder="Cilindradas">
+            </div>
+            <button id="cadastrar">Cadastrar veículo</button>
         </div>
-        <div id="pCilindradas">
-        <input id="cilindradas" type="number" placeholder="Cilindradas">
+        <div>
+            <button id="listar">Listar veículo</button>
+            <div id="fundoLista">
+                <h5 id="tituloLista">Lista de veiculos</h5>
+                <div id="lista"></div>
+            </div>
         </div>
-        <button id="cadastrar">Cadastrar veículo</button>
+        <div>
+            <button id="mover">Mover veículo</button>
+            <div id="fundoLista">
+                <h5 id="tituloMover">Veiculos na Pista</h5>
+                <div id="listaMover"></div>
+            </div>
+        </div>
     </div>
-    <div>     
-        <button id="listar">Listar veículo</button>
-        <h5 id="tituloLista">Lista de veiculos</h5>
-        <div id="lista"></div>
-    </div>
-    <div>
-        <button id="mover">Mover veículo</button>
-        <h5 id="tituloMover">Veiculos na Pista</h5>
-        <div id="listaMover"></div>
-    </div>
-    
 </body>
 
 </html>

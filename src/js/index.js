@@ -93,26 +93,26 @@ botaoCadastrar.addEventListener("click", function () {
         return;
     }
     if (tipo.value === "carro") {
-        if (portas.value !== "") {
+        if (portas.value !==  0 && portas.value > 0) {
             const carro = new Carro()
             carro.setMarca(marca.value);
             carro.setModelo(modelo.value);
             carro.setPortas(portas.value);
             veiculos.push(carro);
         } else {
-            alert("Preencha o Campo: Portas")
+            alert("Preencha o Campo: Portas corretamente")
             return;
         }
 
     } else {
-        if (cilindradas.value !== "") {
+        if (cilindradas.value !== 0 && cilindradas.value > 0) {
             const moto = new Moto();
             moto.setMarca(marca.value);
             moto.setModelo(modelo.value);
             moto.setCilindradas(cilindradas.value);
             veiculos.push(moto);
         } else {
-            alert("Preencha o campo: Cilindradas");
+            alert("Preencha o campo: Cilindradas corretamente");
             return;
         }
     }
@@ -127,10 +127,15 @@ const lista = document.getElementById("lista")
 const tituloL = document.getElementById("tituloLista")
 botaoListar.addEventListener("click", function () {
     lista.innerHTML = "";
-    veiculos.forEach(function (veiculo) {
-        lista.innerHTML += `<p>${veiculo.exibirInfo()}</p>`
-    });
-    tituloL.style.display = "block";
+    if (veiculos.length === 0) {
+        alert("Você não tem nenhum veículo para poder listalo(s)")
+        return;
+    } else {
+        veiculos.forEach(function (veiculo) {
+            lista.innerHTML += `<p>${veiculo.exibirInfo()}</p>`
+        });
+        tituloL.style.display = "block";
+    }
 });
 
 const botaoMover = document.getElementById("mover");
@@ -138,13 +143,17 @@ const listaMover = document.getElementById("listaMover");
 const tituloM = document.getElementById("tituloMover");
 botaoMover.addEventListener("click", function () {
     listaMover.innerHTML = "";
-    veiculos.forEach(function (veiculo) {
-        if (veiculo instanceof Carro) {
-            listaMover.innerHTML += `<p>Carro - ${veiculo.mover()}</p>`
-        } else {
-            listaMover.innerHTML += `<p>Moto - ${veiculo.mover()}</p>`
-        }
-    });
-    tituloM.style.display = "block";
+    if (veiculos.length === 0) {
+        alert("Você não tem nenhum veículo para poder movelo(s)")
+    } else {
+        veiculos.forEach(function (veiculo) {
+            if (veiculo instanceof Carro) {
+                listaMover.innerHTML += `<p><strong>Carro</strong> - ${veiculo.mover()}</p>`
+            } else {
+                listaMover.innerHTML += `<p><strong>Moto</strong> - ${veiculo.mover()}</p>`
+            }
+        });
+        tituloM.style.display = "block";
+    }
 });
 
