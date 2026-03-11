@@ -1,24 +1,24 @@
 class Veiculo {
-//Atributos privados
-    #marca 
+    //Atributos privados
+    #marca
     #modelo
-    constructor() {       
+    constructor() {
     }
-//Metodos, gets e sets
+    //Metodos, gets e sets
     getMarca() {
         return this.#marca
     }
-    setMarca(marca){
+    setMarca(marca) {
         this.#marca = marca
     }
-    getModelo(){
+    getModelo() {
         return this.#modelo
     }
-    setModelo(modelo){
-        this.#modelo = modelo 
+    setModelo(modelo) {
+        this.#modelo = modelo
     }
-    mover(){
-       return `O veículo está se movendo`
+    mover() {
+        return `O veículo está se movendo.`
     }
     exibirInfo() {
         return `O seu veículo é da marca ${this.#marca} e modelo ${this.#modelo}`
@@ -27,71 +27,69 @@ class Veiculo {
 
 //Filhinhos
 class Carro extends Veiculo {
-//Atributo(s) privado(s)
+    //Atributo(s) privado(s)
     #portas
-//Metodo(s), get(s) e set(s)
-    getPortas(){
+    //Metodo(s), get(s) e set(s)
+    getPortas() {
         return this.#portas
     }
-    setPortas(portas){
+    setPortas(portas) {
         this.#portas = portas
     }
-//Sobrescrito
+    //Sobrescrito
     mover() {
-        return `O carro está dirigindo na estrada`
+        return `O carro está dirigindo na estrada.`
     }
 
 
 }
 
-class Moto extends Veiculo{
-//Atributo(s) privado(s)   
+class Moto extends Veiculo {
+    //Atributo(s) privado(s)   
     #cilindradas
-//Metodo(s), get(s) e set(s)
-    getCilindradas(){
+    //Metodo(s), get(s) e set(s)
+    getCilindradas() {
         return this.#cilindradas
     }
-    setCilindradas(cilindradas){
-        this.#cilindradas = cilindradas    
+    setCilindradas(cilindradas) {
+        this.#cilindradas = cilindradas
     }
-//Sobrescrito
+    //Sobrescrito
     mover() {
-        return `A moto está acelerando`
+        return `A moto está acelerando.`
     }
 }
+//Garagem
+const veiculos = []
 
 //teste veiculo
 const carrinho = new Veiculo()
 
 carrinho.setMarca("Ford")
 carrinho.setModelo("Mustang")
-
-const move = document.getElementById("mover")
-move.innerText = carrinho.mover()
-
-const exibir = document.getElementById("exibir")
-exibir.innerText = carrinho.exibirInfo()
-
+veiculos.push(carrinho);
+/*
+document.getElementById("mover").innerText = carrinho.mover()
+document.getElementById("exibir").innerText = carrinho.exibirInfo()
+*/
 //teste carro
 const carro = new Carro();
 carro.setMarca("Toyota");
 carro.setModelo("Corola");
 carro.setPortas(4);
-
-const moveCarro = document.getElementById("moverCarro")
-moveCarro.innerText = carro.mover()
-
-const exibirCarro = document.getElementById("exibirCarro")
-exibirCarro.innerText = carro.exibirInfo()
-
+veiculos.push(carro);
+/*
+document.getElementById("moverCarro").innerText = carro.mover()
+document.getElementById("exibirCarro").innerText = carro.exibirInfo()
+*/
 //teste moto
 const moto = new Moto();
 moto.setMarca("Honda");
 moto.setModelo("CG 160 Titan");
 moto.setCilindradas(162);
-
-const moverMoto = document.getElementById("moverMoto")
-moverMoto.innerText = moto.mover()
-
-const exibirMoto = document.getElementById("exibirMoto")
-exibirMoto.innerText = moto.exibirInfo()
+veiculos.push(moto);
+/*
+document.getElementById("moverMoto").innerText = moto.mover()
+document.getElementById("exibirMoto").innerText = moto.exibirInfo()
+*/
+console.log(veiculos[1].exibirInfo());
