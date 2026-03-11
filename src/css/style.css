@@ -12,3 +12,7 @@ body{
 :root{
     --cor-primaria: #fff;
 }
+
+#pCilindradas, #tituloLista, #tituloMover{
+    display: none;
+}

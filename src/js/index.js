@@ -62,34 +62,89 @@ class Moto extends Veiculo {
 //Garagem
 const veiculos = []
 
-//teste veiculo
-const carrinho = new Veiculo()
+//Valores
+const pPortas = document.getElementById("pPortas");//Partição Portas
+const pCilindradas = document.getElementById("pCilindradas");//Partição
+const marca = document.getElementById("marca");
+const modelo = document.getElementById("modelo");
+const portas = document.getElementById("portas");
+const cilindradas = document.getElementById("cilindradas")
 
-carrinho.setMarca("Ford")
-carrinho.setModelo("Mustang")
-veiculos.push(carrinho);
-/*
-document.getElementById("mover").innerText = carrinho.mover()
-document.getElementById("exibir").innerText = carrinho.exibirInfo()
-*/
-//teste carro
-const carro = new Carro();
-carro.setMarca("Toyota");
-carro.setModelo("Corola");
-carro.setPortas(4);
-veiculos.push(carro);
-/*
-document.getElementById("moverCarro").innerText = carro.mover()
-document.getElementById("exibirCarro").innerText = carro.exibirInfo()
-*/
-//teste moto
-const moto = new Moto();
-moto.setMarca("Honda");
-moto.setModelo("CG 160 Titan");
-moto.setCilindradas(162);
-veiculos.push(moto);
-/*
-document.getElementById("moverMoto").innerText = moto.mover()
-document.getElementById("exibirMoto").innerText = moto.exibirInfo()
-*/
-console.log(veiculos[1].exibirInfo());
+//Tipo do Veículo
+const tipo = document.getElementById("tipo")
+tipo.addEventListener("change", function () {
+    if (tipo.value === "carro") {
+        pPortas.style.display = "block";
+        pCilindradas.style.display = "none";
+    } else {
+        pCilindradas.style.display = "block";
+        pPortas.style.display = "none";
+    }
+})
+
+//Botões
+const botaoCadastrar = document.getElementById("cadastrar")
+botaoCadastrar.addEventListener("click", function () {
+    if (marca.value === "") {
+        alert("Preencha os Campo: Marca");
+        return;
+    } else if (modelo.value === "") {
+        alert("Preencha o Campo: Modelo");
+        return;
+    }
+    if (tipo.value === "carro") {
+        if (portas.value !== "") {
+            const carro = new Carro()
+            carro.setMarca(marca.value);
+            carro.setModelo(modelo.value);
+            carro.setPortas(portas.value);
+            veiculos.push(carro);
+        } else {
+            alert("Preencha o Campo: Portas")
+            return;
+        }
+
+    } else {
+        if (cilindradas.value !== "") {
+            const moto = new Moto();
+            moto.setMarca(marca.value);
+            moto.setModelo(modelo.value);
+            moto.setCilindradas(cilindradas.value);
+            veiculos.push(moto);
+        } else {
+            alert("Preencha o campo: Cilindradas");
+            return;
+        }
+    }
+    marca.value = "";
+    modelo.value = "";
+    portas.value = "";
+    cilindradas.value = "";
+});
+
+const botaoListar = document.getElementById("listar");
+const lista = document.getElementById("lista")
+const tituloL = document.getElementById("tituloLista")
+botaoListar.addEventListener("click", function () {
+    lista.innerHTML = "";
+    veiculos.forEach(function (veiculo) {
+        lista.innerHTML += `<p>${veiculo.exibirInfo()}</p>`
+    });
+    tituloL.style.display = "block";
+});
+
+const botaoMover = document.getElementById("mover");
+const listaMover = document.getElementById("listaMover");
+const tituloM = document.getElementById("tituloMover");
+botaoMover.addEventListener("click", function () {
+    listaMover.innerHTML = "";
+    veiculos.forEach(function (veiculo) {
+        if (veiculo instanceof Carro) {
+            listaMover.innerHTML += `<p>Carro - ${veiculo.mover()}</p>`
+        } else {
+            listaMover.innerHTML += `<p>Moto - ${veiculo.mover()}</p>`
+        }
+    });
+    tituloM.style.display = "block";
+});
+
